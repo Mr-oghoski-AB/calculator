@@ -3,10 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
     <title>Calculator</title>
 </head>
 <body>
-    
+   <div class="calc-body">
+        <section>
+            <div class="pos">
+                <h1 id="result"> 15 </h1>
+                <p id="input"> 3 x 5 </p>
+            </div>
+        </section>
+        <div id="btnContainer">
+            <div class="first">
+                <div>
+                    <button id="clear" class="size green">AC</button>
+                    <button id="plus-minus" class="size green">+/-</button>
+                    <button id="percentage" class="size green">%</button>
+                </div>
+                <div>
+                    <button class="size white"  id="7">7</button>
+                    <button class="size white"  id="8">8</button>
+                    <button class="size white"  id="9">9</button>
+                    <button class="size white"  id="4">4</button>
+                    <button class="size white"  id="5">5</button>
+                    <button class="size white"  id="6">6</button>
+                    <button class="size white"  id="1">1</button>
+                    <button class="size white"  id="2">2</button>
+                    <button class="size white"  id="3">3</button>
+                    <button class="size white"  id="reset">r</button>
+                    <button class="size white"  id="0">0</button>
+                    <button class="size white"  id=".">.</button>
+                </div> 
+            </div>
+            <div class="operators">
+                <button id="divide"  class="size red">/</button>
+                <button id="multiply" class="red size">x</button>
+                <button id="subtract" class="red size" >-</button>
+                <button id="add" class="red size" >+</button>
+                <button id="equalTo" class="red size">=</button>
+            </div>
+        </div>
+   </div> 
    <script src="./script.js"></script> 
 </body>
 </html>
