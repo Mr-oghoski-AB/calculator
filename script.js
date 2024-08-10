@@ -2,6 +2,9 @@
 const add = (...arr) => {
     let total = null;
     arr.forEach((element) => {
+        if(typeof(element) == 'string'){
+            return NaN
+        }
         total += (element)
     })
     return total
@@ -19,8 +22,9 @@ const divide  = (...arr) => {
     let total = arr.reduce((first,second) => {
         if (second == 0){
             return 'lmao ;)'
-        }else{
-            return (first / second).toFixed(4)
+        }else if (second != 0){
+            let num = (first / second).toFixed(4)
+            return parseFloat(num)
         }
         
     })
@@ -125,6 +129,7 @@ sign.forEach(element => {
             secondOperand = ''
             secondNum = ''
             display.textContent = firstNum
+            answer.textContent = firstNum
         }
         else if (typeof(result) == 'undefined' && typeof(secondNum) != 'undefined'){
             operate(firstNum,operator,secondNum);
@@ -134,11 +139,75 @@ sign.forEach(element => {
             secondOperand = ''
             secondNum = ''
             display.textContent = firstNum
+            answer.textContent = firstNum
         }
         display.textContent += ' ' + element.textContent + ' '
         operator = element.id 
          
     })
+})
+// add keyboard support 
+window.addEventListener('keydown' , (e) => {
+    let key = event.key
+
+    //test if key s 0-9
+    if (/\d/.test(key)) {
+        display.textContent += key;
+        if (operator != ''){
+            secondOperand += key
+            secondNum = Number(secondOperand)
+        }
+        else if (operator == '' ) {
+            firstOperand += key
+            firstNum = Number(firstOperand)
+        }
+    }
+
+    else if (key === '=') {
+        if (typeof(secondNum) != 'undefined'){
+            operate(firstNum,operator,secondNum)
+            answer.textContent = result;
+        }
+        else{
+            alert('please input second operand')
+        }
+    } 
+   
+    else if (key === 'Backspace') {
+        if (typeof(secondNum) == 'undefined' && operator == ''){
+            let word = firstOperand.split('')
+            word.pop()
+            firstOperand = word.join('')
+            display.textContent = firstOperand
+            firstNum = Number(firstOperand)
+            result = undefined
+            answer.textContent = ''
+            if (firstNum == 0){
+                firstNum = ''
+            }
+    
+        }
+    
+        else if (operator != '' && typeof(secondNum) == 'undefined' ){
+            operator = ''
+            display.textContent = firstOperand
+        }
+    
+        else if (typeof(firstNum) != 'undefined' && operator != ''){
+            let word = secondOperand.split('')
+            word.pop()
+            secondOperand = word.join('')
+            display.textContent = firstOperand + ' ' + operator + ' ' + secondOperand;
+            secondNum = Number(secondOperand)
+            result = undefined
+            answer.textContent = ''
+            if (secondNum == 0){
+                secondNum = undefined
+            }
+        }
+    }
+ 
+    
 })
 
 equal.addEventListener('click', () => {

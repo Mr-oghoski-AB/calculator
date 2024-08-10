@@ -27,6 +27,16 @@ section{
     height: 50%;
     color: #EEEEEE;
     text-align: right;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.pos p {
+    min-height: 20%;  
+}
+.pos h1{
+    min-height: 20%;
+
 }
 #btnContainer{
     width: 100%;
