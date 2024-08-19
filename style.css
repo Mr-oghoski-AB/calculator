@@ -110,3 +110,7 @@ section{
 .zero {
     width: 120px;
 }
+
+#input{
+    font-size: 17px;
+}
